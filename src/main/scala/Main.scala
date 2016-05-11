@@ -5,7 +5,7 @@ import ennusta.io.CsvIo
 
 object Main {
     def main(args: Array[String]) {
-        val dataPath = "/home/risto/Documents/opiskelu/kurssit/probmodharkka/data/data3.txt"
+        val dataPath = args(0) 
         var data = CsvIo.readCsv(dataPath)
         
         var first = false
