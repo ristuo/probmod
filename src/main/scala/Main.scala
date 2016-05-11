@@ -6,7 +6,7 @@ import ennusta.io.CsvIo
 object Main {
     def main(args: Array[String]) {
         val dataPath = "/home/risto/Documents/opiskelu/kurssit/probmodharkka/data/data3.txt"
-        val data = CsvIo.readCsv(dataPath)
+        var data = CsvIo.readCsv(dataPath)
         
         var first = false
         var givenSoFar = new Array[Int](0)
@@ -23,6 +23,7 @@ object Main {
                 for (i <- 1 until prediction.size)
                     prediction(i) = 0.00001
                 println(prediction.mkString(","))
+                data = data ++ Array(givenSoFar ++ Array(ln.toInt))
                 givenSoFar = new Array[Int](0)
                 first = false
             } else {
@@ -30,7 +31,7 @@ object Main {
                 prediction = Predict.predict(givenSoFar=givenSoFar, data=data)
                 println(prediction.mkString(","))
                 if (givenSoFar.size == 302) {
-                      first = true 
+                    first = true 
                 }
             }
         }
