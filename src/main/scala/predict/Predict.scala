@@ -27,17 +27,17 @@ object Predict {
                 manhattan(dataRow=dataRow,givenSoFar=givenSoFar)
             )
         })
-        val cutoff = 75
+        val cutoff = 125
         val colVals = { 
             val filsu1 = dists
                 .filter(x => x._2 <= cutoff)
                 .map(_._1(currentCol))
-            if (filsu1.size > 0) {
+            if (filsu1.size > 40) {
                 filsu1
             } else {
                 val sorted = dists.sortBy(_._2)
                 dists
-                    .filter(x => x._2 <= sorted(3)._2)
+                    .filter(x => x._2 <= sorted(100)._2)
                     .map(_._1(currentCol))
             }
         }
